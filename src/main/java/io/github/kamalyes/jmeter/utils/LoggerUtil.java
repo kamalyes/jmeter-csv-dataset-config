@@ -20,7 +20,7 @@ public class LoggerUtil {
      * @return
      */
     public static Logger getLogger() {
-        return LoggerFactory.getLogger("pika-jmeter-run-log");
+        return LoggerFactory.getLogger("KamalyesJmeterCsvDatasetConfigLog");
     }
 
     public static void writeLog(Object msg, String level) {

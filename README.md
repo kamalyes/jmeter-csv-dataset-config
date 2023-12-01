@@ -1,71 +1,76 @@
-# Jmeter Csv Dataset Config
+# Jmeter Csv数据集配置
 
-## Introduction
+## 介绍
 
-This plugin provides additional feature over the JMeter's default **CSV data set config element**. This also provides additional parameterization feature.
+这个插件在JMeter默认的CSV数据集配置元素上提供了额外的功能。这也提供了额外的参数化特性。
 
-This will enable **LoadRunner** users, the privilege of having similar parameter advantage in **Apache JMeter**
+## 预览
 
-## Preview
+![CSV数据集配置](./images/jmeter-csv-dataset-config.png)
 
-![CSV Dataset Config](https://yuyanqing.cn/oss/image-bed/col/jmeter/jmeter-csv-dataset-config.png)
+## 所需组件&版本
 
-## Required Components
+- Apache JMeter组件
+- Apache JMeter核心
+- Jmeter版本5.1.1或以上
+- Java 8或以上
 
-1. Apache JMeter components
-2. Apache JMeter core
+## 安装说明
 
-## Jmeter Target
+- 从GitHub下载源代码。
+- mvn clean deploy --settings ./setting.xml
+- Jar将在目标目录下生成(jmeter-csv-dataset-config-xx.jar)。
+- 复制Jar到<Jmeter安装目录>/lib/ext/
 
-* Jmeter version 5.1.1 or above
-* Java 8 or above
+备注：
 
-## Installation Instructions
+```bash
+mvn clean package依次执行了clean、resources、compile、testResources、testCompile、test、jar(打包)等７个阶段。
+mvn clean install依次执行了clean、resources、compile、testResources、testCompile、test、jar(打包)、install等8个阶段。
+mvn clean deploy依次执行了clean、resources、compile、testResources、testCompile、test、jar(打包)、install、deploy等９个阶段。
+package命令完成了项目编译、单元测试、打包功能
+install命令完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库
+deploy命令完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库
+```
 
-* Download the source code from the GitHub.
-* Just do a mvn clean install (M2 is required)
-* Jar will be generated under the target directory (di-extended-csv-xx.jar).
-* Copy the Jar to \<Jmeter Installed Directory\>/lib/ext/
+## 有什么新鲜事吗?
 
-## What's new ?
+- 改进了新的GUI
 
-* Improved new GUI
-* Added feature to create new file
-* Added feature to edit csv file with default text editor
-* Fixed quoted data issue
-* Fixed relative path issue
-* Support for large csv (Moved out of In-memory read)
+- 增加了创建新文件的功能
 
-## Options
+- 添加功能，编辑csv文件与默认的文本编辑器
 
-✨ This version eliminates remembering the below combination table ✨
+- 修正引用数据问题
 
-This allows reading of CSV data as follows
+- 修正了相对路径问题
 
-* Select Row (Sequential | Random | Unique)
-* Update Value (Each Iteration | Once)
-* When Out of Values (Continue Cyclic | Continue with last Value | Abort Thread)
+- 支持大csv(移出内存读取)
 
-The below table is the combinations allowed while using this plugin
+## 选项
 
-| Select Row | Update value   | Out of Values            | Allocate Block Size |
-|------------|----------------|--------------------------|---------------------|
-| Sequential | Each Iteration | Continue Cyclic          | NA                  |
-| Sequential | Each Iteration | Abort Thread             | NA                  |
-| Sequential | Each Iteration | Continue with Last value | NA                  |
-| Sequential | Once           | NA                       | NA                  |
-| Random     | Each Iteration | NA                       | NA                  |
-| Random     | Once           | NA                       | NA                  |
-| Unique     | Each Iteration | Continue with Last Value | Enabled             |
-| Unique     | Each Iteration | Continue Cyclic          | Enabled             |
-| Unique     | Each Iteration | Abort Thread             | Enabled             |
-| Unique     | Once           | NA                       | NA                  |
+✨ 此版本无需记住下面的组合表 ✨
 
-## Future Release in pipeline
+这允许读取 CSV 数据，如下所示
 
-* Visualizing csv data in data table
-* Simulate Parameter window
+- 选择行（顺序|随机|唯一）
+- 更新值（每次迭代|一次）
+- 当超出值时（继续循环|继续最后一个值|中止线程）
 
-## References
+下表是使用此插件时允许的组合
+| Select Row | Update value | Out of Values | Allocate Block Size |
+| ------ | -------- | ------------------ | ---------- |
+| 顺序   | 每次迭代 | 继续循环           | 不适用     |
+| 顺序   | 每次迭代 | 中止线程           | 不适用     |
+| 顺序   | 每次迭代 | 继续最后一个值     | 不适用     |
+| 顺序   | 一次     | 不适用             | 不适用     |
+| 随机的 | 每次迭代 | 不适用             | 不适用     |
+| 随机的 | 一次     | 不适用             | 不适用     |
+| 独特的 | 每次迭代 | 继续使用最后一个值 | 启用       |
+| 独特的 | 每次迭代 | 继续循环           | 启用       |
+| 独特的 | 每次迭代 | 中止线程           | 启用       |
+| 独特的 | 一次     | 不适用             | 不适用     |
 
-* CSV data set config
+## 引用
+
+- [rollno748-Extended-csv-dataset-config](https://github.com/rollno748/Extended-csv-dataset-config)
